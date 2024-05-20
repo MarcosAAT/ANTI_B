@@ -2862,6 +2862,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 477a76ff29832b2499b9244de7070326, type: 3}
   moveDistance: 40
   moveSpeed: 4
+  animationSpeed: 0.52
 --- !u!1 &1873540518
 GameObject:
   m_ObjectHideFlags: 0
@@ -3344,6 +3345,7 @@ MonoBehaviour:
   sprites: []
   moveDistance: 1
   moveSpeed: 1
+  animationSpeed: 0.45
 --- !u!1 &2032217681
 GameObject:
   m_ObjectHideFlags: 0

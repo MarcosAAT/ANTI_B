@@ -14,12 +14,13 @@ public class MainMenu : MonoBehaviour
 
     public float moveDistance = 1.0f; 
     public float moveSpeed = 1.0f;
+    public float animationSpeed = 0.45f;
 
     private Vector3 startPosition;
 
     private void Start()
     {
-        InvokeRepeating(nameof(AnimateBirdSprite), 0.5f, 0.5f);
+        InvokeRepeating(nameof(AnimateBirdSprite), animationSpeed, animationSpeed);
 
         startPosition = birdImage.transform.position;
     }
