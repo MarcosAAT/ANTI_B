@@ -9,8 +9,13 @@ public class GameManager : MonoBehaviour
    // public Player player; 
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI finalScoreText;
+    public TextMeshProUGUI pauseScoreText;
+
     private int score;
     public GameObject gameOverCanvas;
+    public GameObject pauseMenuCanvas;
+    public GameObject gameCanvas;
+
 
     private void Start()
     {
@@ -20,12 +25,15 @@ public class GameManager : MonoBehaviour
         score--; 
         scoreText.text =  score.ToString();
         finalScoreText.text = score.ToString();
+        pauseScoreText.text = score.ToString();
+
     }
 
     public void IncreseScore(){
         score++; 
         scoreText.text =  score.ToString();
         finalScoreText.text = score.ToString();
+        pauseScoreText.text = score.ToString();
 
     }
 
@@ -33,11 +41,21 @@ public class GameManager : MonoBehaviour
         Time.timeScale= 0f;
         //player.enabled= false; 
 
+
+        pauseMenuCanvas.SetActive(true);
+
     }
+
+    public void Resume()
+    {
+        Time.timeScale = 1f;
+    }
+
     public void GameOver(){
         gameOverCanvas.SetActive(true);
         Time.timeScale = 0f;
 
+        gameCanvas.SetActive(false);
     }
 
     public void PlayGame()
