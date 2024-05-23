@@ -2251,10 +2251,54 @@ PrefabInstance:
       propertyPath: m_Name
       value: Settings Menu
       objectReference: {fileID: 0}
+    - target: {fileID: 438725626976502487, guid: d50a306b561fe8242b4910f2991f99a9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 853232884871770647, guid: d50a306b561fe8242b4910f2991f99a9, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 853232884871770647, guid: d50a306b561fe8242b4910f2991f99a9, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3551049145525681219, guid: d50a306b561fe8242b4910f2991f99a9, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3551049145525681219, guid: d50a306b561fe8242b4910f2991f99a9, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3551049145525681219, guid: d50a306b561fe8242b4910f2991f99a9, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3962312874092066232, guid: d50a306b561fe8242b4910f2991f99a9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1740910906}
+    - target: {fileID: 6427379760863080935, guid: d50a306b561fe8242b4910f2991f99a9, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6427379760863080935, guid: d50a306b561fe8242b4910f2991f99a9, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8111205363175937255, guid: d50a306b561fe8242b4910f2991f99a9, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8111205363175937255, guid: d50a306b561fe8242b4910f2991f99a9, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8111205363175937255, guid: d50a306b561fe8242b4910f2991f99a9, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8622663023096167350, guid: d50a306b561fe8242b4910f2991f99a9, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
