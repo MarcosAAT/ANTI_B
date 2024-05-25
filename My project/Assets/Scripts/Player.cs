@@ -19,6 +19,7 @@ public class NewBehaviourScript : MonoBehaviour
 }
 
 public class Player: MonoBehaviour{
+    public float upperLimit = 5f; 
     private Vector3 direction; 
     public float strength = 5f;
     public float gravity = -9.81f;
@@ -52,9 +53,14 @@ public class Player: MonoBehaviour{
                 direction = Vector3.up * strength;
             }
 
-            // Apply gravity and update the position
+
             direction.y += gravity * Time.deltaTime;
-            transform.position += direction * Time.deltaTime;
+            Vector3 newPosition = transform.position + direction * Time.deltaTime;
+            newPosition.y = Mathf.Min(newPosition.y, upperLimit);
+
+            // Update the position
+            transform.position = newPosition;
+
 
             // Tilt the bird based on the direction
             Vector3 rotation = transform.eulerAngles;
