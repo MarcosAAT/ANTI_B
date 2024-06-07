@@ -161,9 +161,9 @@ MonoBehaviour:
   tilt: 5
   isGameOver: 0
   sprites:
-  - {fileID: 21300000, guid: 4b4a57de377138e4e8369d8145550062, type: 3}
-  - {fileID: 21300000, guid: 47a1c54c1427e10458e1e21315a00666, type: 3}
-  - {fileID: 21300000, guid: 477a76ff29832b2499b9244de7070326, type: 3}
+  - {fileID: 21300000, guid: bffe29034577bfa4cbb3c3df16e0e304, type: 3}
+  - {fileID: 21300000, guid: 8e44fcca681bf6d478e79d82625118cd, type: 3}
+  - {fileID: 21300000, guid: 97509b6fe6d3d764887d43ee703494e6, type: 3}
 --- !u!58 &113056967
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -267,7 +267,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4b4a57de377138e4e8369d8145550062, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bffe29034577bfa4cbb3c3df16e0e304, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
