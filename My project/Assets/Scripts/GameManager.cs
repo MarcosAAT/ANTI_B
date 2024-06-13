@@ -16,6 +16,12 @@ public class GameManager : MonoBehaviour
     public GameObject pauseMenuCanvas;
     public GameObject gameCanvas;
 
+    [SerializeField] private AudioClip[] drinkSoundClips;
+    [SerializeField] private AudioClip antiSoundClip;
+
+   
+
+
 
     private void Start()
     {
@@ -27,6 +33,9 @@ public class GameManager : MonoBehaviour
         finalScoreText.text = score.ToString();
         pauseScoreText.text = score.ToString();
 
+        SoundEffectsManager.instance.PlayRandomSoundFXClip(drinkSoundClips, transform, 1f);
+
+
     }
 
     public void IncreseScore(){
@@ -34,6 +43,9 @@ public class GameManager : MonoBehaviour
         scoreText.text =  score.ToString();
         finalScoreText.text = score.ToString();
         pauseScoreText.text = score.ToString();
+
+        SoundEffectsManager.instance.PlaySoundFXClip(antiSoundClip, transform, 1f);
+
 
     }
 
