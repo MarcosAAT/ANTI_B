@@ -1173,7 +1173,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4b4a57de377138e4e8369d8145550062, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e186c2341b91f8147b3d77951ef142cc, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1681,9 +1681,9 @@ MonoBehaviour:
   selectedLevel: 1
   birdImage: {fileID: 1283478450}
   sprites:
-  - {fileID: 21300000, guid: 4b4a57de377138e4e8369d8145550062, type: 3}
-  - {fileID: 21300000, guid: 47a1c54c1427e10458e1e21315a00666, type: 3}
-  - {fileID: 21300000, guid: 477a76ff29832b2499b9244de7070326, type: 3}
+  - {fileID: 21300000, guid: e186c2341b91f8147b3d77951ef142cc, type: 3}
+  - {fileID: 21300000, guid: 967ed57395a0c0340826ee4615bb6d8d, type: 3}
+  - {fileID: 21300000, guid: 2387ef0e903b42244bd7f0262edfbae0, type: 3}
   moveDistance: 40
   moveSpeed: 4
   animationSpeed: 0.52
