@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class MainMenu : MonoBehaviour
 {
@@ -16,6 +17,9 @@ public class MainMenu : MonoBehaviour
     public float moveSpeed = 1.0f;
     public float animationSpeed = 0.45f;
 
+    public TextMeshProUGUI highScoreValue;
+
+
     private Vector3 startPosition;
 
     private void Start()
@@ -23,6 +27,8 @@ public class MainMenu : MonoBehaviour
         InvokeRepeating(nameof(AnimateBirdSprite), animationSpeed, animationSpeed);
 
         startPosition = birdImage.transform.position;
+
+        highScoreValue.text = PlayerPrefs.GetInt("Highscore").ToString();
     }
 
     void Update()
@@ -49,5 +55,12 @@ public class MainMenu : MonoBehaviour
     public void PlayGame()
     {
         SceneManager.LoadScene(selectedLevel);
+    }
+
+    public void ResetHighscore()
+    {
+        PlayerPrefs.DeleteKey("Highscore");
+        highScoreValue.text = PlayerPrefs.GetInt("Highscore").ToString();
+
     }
 }
