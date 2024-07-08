@@ -34,7 +34,7 @@ public class MainMenu : MonoBehaviour
 
     private void AnimateBirdSprite()
     {
-        Debug.Log("calling annimation");
+        
         spriteIndex++;
 
         if (spriteIndex >= sprites.Length)
