@@ -6,12 +6,12 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-   // public Player player; 
+    public Player player; 
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI finalScoreText;
     public TextMeshProUGUI pauseScoreText;
 
-    private int score;
+    public int score;
     public GameObject gameOverCanvas;
     public GameObject pauseMenuCanvas;
     public GameObject gameCanvas;
@@ -30,11 +30,15 @@ public class GameManager : MonoBehaviour
     }
 
     public void IncreseScore(){
-        score++; 
-        scoreText.text =  score.ToString();
+        score++;
+        scoreText.text = score.ToString();
         finalScoreText.text = score.ToString();
         pauseScoreText.text = score.ToString();
 
+        if (score % 10 == 0 && score != 0)
+        {
+            player.UpdateGravity(score);
+        }
     }
 
     public void Pause(){
@@ -71,5 +75,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
 
     }
+
+ 
 
 }
