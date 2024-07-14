@@ -16,6 +16,9 @@ public class GameManager : MonoBehaviour
     public GameObject pauseMenuCanvas;
     public GameObject gameCanvas;
 
+    public int consecutiveAntiCount = 0;
+    public bool bonusActive = false;
+
 
     private void Start()
     {
@@ -29,8 +32,17 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void IncreseScore(){
-        score++;
+    public void IncreseScore()
+    {
+        if (bonusActive)
+        {
+            score += 2; // Double the points during bonus
+        }
+        else
+        {
+            score++;
+        }
+
         scoreText.text = score.ToString();
         finalScoreText.text = score.ToString();
         pauseScoreText.text = score.ToString();
@@ -74,6 +86,28 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(0);
         Time.timeScale = 1f;
 
+    }
+
+    public void ActivateBonus()
+    {
+        bonusActive = true;
+        Invoke(nameof(DeactivateBonus), 10f); // Bonus active for 10 seconds
+    }
+
+    private void DeactivateBonus()
+    {
+        bonusActive = false;
+    }
+
+    public void AntiPickedUp()
+    {
+        consecutiveAntiCount++;
+        if (consecutiveAntiCount >= 5)
+        {
+            ActivateBonus();
+            player.ResetGravity();
+            consecutiveAntiCount = 0;
+        }
     }
 
  

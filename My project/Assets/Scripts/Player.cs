@@ -105,6 +105,11 @@ public class Player: MonoBehaviour{
         }
     }
 
+    public void ResetGravity()
+    {
+        gravity = -9.81f;
+    }
+
    
 
    
