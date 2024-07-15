@@ -10,7 +10,12 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI finalScoreText;
     public TextMeshProUGUI pauseScoreText;
+    public TextMeshProUGUI bestScoreText;
+    public TextMeshProUGUI bestScoreTextPauseMenu;
 
+
+
+    public int highScore;
     public int score;
     public GameObject gameOverCanvas;
     public GameObject pauseMenuCanvas;
@@ -23,6 +28,10 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         gameOverCanvas.SetActive(false);
+
+        highScore = PlayerPrefs.GetInt("Highscore");
+        bestScoreTextPauseMenu.text = PlayerPrefs.GetInt("Highscore").ToString();
+        bestScoreText.text = PlayerPrefs.GetInt("Highscore").ToString();
     }
     public void DecreaseScore(){
         score--; 
@@ -46,6 +55,16 @@ public class GameManager : MonoBehaviour
         scoreText.text = score.ToString();
         finalScoreText.text = score.ToString();
         pauseScoreText.text = score.ToString();
+
+
+        if (score > highScore)
+        {
+            highScore = score;
+            PlayerPrefs.SetInt("Highscore", highScore);
+            bestScoreText.text = PlayerPrefs.GetInt("Highscore").ToString();
+            bestScoreTextPauseMenu.text = PlayerPrefs.GetInt("Highscore").ToString();
+        }
+
 
         if (score % 10 == 0 && score != 0)
         {
