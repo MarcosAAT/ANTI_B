@@ -14,12 +14,9 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI bestScoreTextPauseMenu;
 
 
-<<<<<<< HEAD
 
     public int highScore;
-=======
     public int score;
->>>>>>> main
     public GameObject gameOverCanvas;
     public GameObject pauseMenuCanvas;
     public GameObject gameCanvas;
@@ -59,7 +56,7 @@ public class GameManager : MonoBehaviour
         finalScoreText.text = score.ToString();
         pauseScoreText.text = score.ToString();
 
-<<<<<<< HEAD
+
         if (score > highScore)
         {
             highScore = score;
@@ -69,12 +66,10 @@ public class GameManager : MonoBehaviour
         }
 
 
-=======
         if (score % 10 == 0 && score != 0)
         {
             player.UpdateGravity(score);
         }
->>>>>>> main
     }
 
     public void Pause(){
