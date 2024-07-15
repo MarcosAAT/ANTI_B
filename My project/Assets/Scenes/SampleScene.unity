@@ -155,6 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18e91813aec102344a9cf4fe9577d41d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  manager: {fileID: 0}
   upperLimit: 5
   strength: 5
   gravity: -9
@@ -822,12 +823,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2426e2d71f0cb044cb106d958c99210d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 113056966}
   scoreText: {fileID: 635807397}
   finalScoreText: {fileID: 840702740}
   pauseScoreText: {fileID: 2120743874}
   bestScoreText: {fileID: 731284196}
   bestScoreTextPauseMenu: {fileID: 1045443106}
   highScore: 0
+  score: 0
   gameOverCanvas: {fileID: 527707184}
   pauseMenuCanvas: {fileID: 784254111}
   gameCanvas: {fileID: 1268330332}
@@ -1114,6 +1117,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 1392614459}
+    - target: {fileID: 8992719944529701409, guid: d734a6a2d0878fb43a6b1b913c95f481, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 17.500244
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1297,7 +1304,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 438, y: 44.31494}
+  m_AnchoredPosition: {x: 170, y: 1180}
   m_SizeDelta: {x: 284.99, y: 88.630005}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2058653165

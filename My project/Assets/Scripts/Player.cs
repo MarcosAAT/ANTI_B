@@ -19,11 +19,13 @@ public class NewBehaviourScript : MonoBehaviour
 }
 
 public class Player: MonoBehaviour{
+    public GameManager manager; 
     public float upperLimit = 5f; 
     private Vector3 direction; 
     public float strength = 5f;
     public float gravity = -9.81f;
     public float tilt = 5f;
+    
 
     public bool isGameOver = false;
 
@@ -88,13 +90,27 @@ public class Player: MonoBehaviour{
             //Destroy(gameObject);
 
         } else if(other.gameObject.tag == "ScoreWine"){
-            FindObjectOfType<GameManager>().DecreaseScore();
+            FindObjectOfType<GameManager>().IncreseScore();
 
         } else if(other.gameObject.tag == "Ground"){
             FindObjectOfType<GameManager>().GameOver();
             isGameOver = true;
         }
     }
+
+    public void UpdateGravity(int score){
+        if (score % 10 == 0 && score != 0)
+        {
+            gravity -= 5.0f; // Increase gravity by reducing its value
+        }
+    }
+
+    public void ResetGravity()
+    {
+        gravity = -9.81f;
+    }
+
+   
 
    
 

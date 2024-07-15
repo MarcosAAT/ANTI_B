@@ -6,7 +6,7 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-   // public Player player; 
+    public Player player; 
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI finalScoreText;
     public TextMeshProUGUI pauseScoreText;
@@ -14,11 +14,18 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI bestScoreTextPauseMenu;
 
 
-    private int score;
+<<<<<<< HEAD
+
     public int highScore;
+=======
+    public int score;
+>>>>>>> main
     public GameObject gameOverCanvas;
     public GameObject pauseMenuCanvas;
     public GameObject gameCanvas;
+
+    public int consecutiveAntiCount = 0;
+    public bool bonusActive = false;
 
 
     private void Start()
@@ -37,12 +44,22 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void IncreseScore(){
-        score++; 
-        scoreText.text =  score.ToString();
+    public void IncreseScore()
+    {
+        if (bonusActive)
+        {
+            score += 2; // Double the points during bonus
+        }
+        else
+        {
+            score++;
+        }
+
+        scoreText.text = score.ToString();
         finalScoreText.text = score.ToString();
         pauseScoreText.text = score.ToString();
 
+<<<<<<< HEAD
         if (score > highScore)
         {
             highScore = score;
@@ -52,6 +69,12 @@ public class GameManager : MonoBehaviour
         }
 
 
+=======
+        if (score % 10 == 0 && score != 0)
+        {
+            player.UpdateGravity(score);
+        }
+>>>>>>> main
     }
 
     public void Pause(){
@@ -88,5 +111,29 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
 
     }
+
+    public void ActivateBonus()
+    {
+        bonusActive = true;
+        Invoke(nameof(DeactivateBonus), 10f); // Bonus active for 10 seconds
+    }
+
+    private void DeactivateBonus()
+    {
+        bonusActive = false;
+    }
+
+    public void AntiPickedUp()
+    {
+        consecutiveAntiCount++;
+        if (consecutiveAntiCount >= 5)
+        {
+            ActivateBonus();
+            player.ResetGravity();
+            consecutiveAntiCount = 0;
+        }
+    }
+
+ 
 
 }
