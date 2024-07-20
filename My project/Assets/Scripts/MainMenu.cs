@@ -10,6 +10,15 @@ public class MainMenu : MonoBehaviour
     public int selectedLevel = 1;
 
     public Image birdImage;
+    public Image birdImageTutorial;
+    public Image birdImageTutorial_2;
+    public Image birdImageTutorial_3;
+    public Image birdImageTutorial_4;
+    public Image arrowImage;
+
+
+    public TextMeshProUGUI ANTIText;
+
     private int spriteIndex;
     public Sprite[] sprites;
 
@@ -29,6 +38,9 @@ public class MainMenu : MonoBehaviour
         startPosition = birdImage.transform.position;
 
         highScoreValue.text = PlayerPrefs.GetInt("Highscore").ToString();
+
+        StartCoroutine(GrowShrinkFont());
+
     }
 
     void Update()
@@ -36,6 +48,7 @@ public class MainMenu : MonoBehaviour
         // Bird Annimation up and down
         Vector3 newPosition = startPosition + Vector3.up * Mathf.Sin(Time.time * moveSpeed) * moveDistance;
         birdImage.transform.position = newPosition;
+
     }
 
     private void AnimateBirdSprite()
@@ -50,6 +63,10 @@ public class MainMenu : MonoBehaviour
 
 
         birdImage.sprite = sprites[spriteIndex];
+        birdImageTutorial.sprite = sprites[spriteIndex];
+        birdImageTutorial_2.sprite = sprites[spriteIndex];
+        birdImageTutorial_3.sprite = sprites[spriteIndex];
+        birdImageTutorial_4.sprite = sprites[spriteIndex];
 
     }
     public void PlayGame()
@@ -63,4 +80,41 @@ public class MainMenu : MonoBehaviour
         highScoreValue.text = PlayerPrefs.GetInt("Highscore").ToString();
 
     }
+
+    private IEnumerator GrowShrinkFont()
+    {
+        float duration = 2f; // Duration for grow and shrink
+        float halfDuration = duration / 2f;
+        int minFontSize = 150;
+        int maxFontSize = 220;
+
+        while (true)
+        {
+            // Grow font size
+            float elapsed = 0f;
+            while (elapsed < halfDuration)
+            {
+                ANTIText.fontSize = Mathf.Lerp(minFontSize, maxFontSize, elapsed / halfDuration);
+                elapsed += Time.deltaTime;
+                yield return null;
+            }
+
+            // Ensure max size is set
+            ANTIText.fontSize = maxFontSize;
+
+            // Shrink font size
+            elapsed = 0f;
+            while (elapsed < halfDuration)
+            {
+                ANTIText.fontSize = Mathf.Lerp(maxFontSize, minFontSize, elapsed / halfDuration);
+                elapsed += Time.deltaTime;
+                yield return null;
+            }
+
+            // Ensure min size is set
+            ANTIText.fontSize = minFontSize;
+        }
+    }
+
+
 }
