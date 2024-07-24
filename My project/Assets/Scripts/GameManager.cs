@@ -21,8 +21,15 @@ public class GameManager : MonoBehaviour
     public GameObject pauseMenuCanvas;
     public GameObject gameCanvas;
 
+
+
+
+   
+
+
     public int consecutiveAntiCount = 0;
     public bool bonusActive = false;
+
 
 
     private void Start()
@@ -38,6 +45,8 @@ public class GameManager : MonoBehaviour
         scoreText.text =  score.ToString();
         finalScoreText.text = score.ToString();
         pauseScoreText.text = score.ToString();
+
+
 
     }
 
@@ -56,6 +65,8 @@ public class GameManager : MonoBehaviour
         finalScoreText.text = score.ToString();
         pauseScoreText.text = score.ToString();
 
+        
+
 
         if (score > highScore)
         {
@@ -70,6 +81,7 @@ public class GameManager : MonoBehaviour
         {
             player.UpdateGravity(score);
         }
+
     }
 
     public void Pause(){

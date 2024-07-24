@@ -61,7 +61,7 @@ GameObject:
   - component: {fileID: 7633211233644994723}
   m_Layer: 0
   m_Name: martini1
-  m_TagString: Martini
+  m_TagString: Drink
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -1,11 +1,9 @@
 fileFormatVersion: 2
-guid: 9546419d19678424bb5c8dc895891f1e
+guid: e03f9d598bde046e7a348cff21295cd5
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - audio: {instanceID: 0}
-  - destroyWineClip: {instanceID: 0}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
