@@ -8,6 +8,8 @@ TagManager:
   - NegativeScore
   - Ground
   - Martini
+  - Drink
+  - ANTI
   layers:
   - Default
   - TransparentFX

@@ -19,7 +19,15 @@ public class NewBehaviourScript : MonoBehaviour
 }
 
 public class Player: MonoBehaviour{
+
+    [SerializeField] private AudioClip[] wingSoundClips;
+    [SerializeField] private AudioClip deathSoundClip;
+    [SerializeField] private AudioClip[] drinkSoundClips;
+    [SerializeField] private AudioClip antiSoundClip;
+
+
     public GameManager manager; 
+
     public float upperLimit = 5f; 
     private Vector3 direction; 
     public float strength = 5f;
@@ -34,15 +42,21 @@ public class Player: MonoBehaviour{
     public Sprite[] sprites;
 
 
+
+
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        
     }
 
     private void Start()
     {
         InvokeRepeating(nameof(AnimateSprite), 0.15f, 0.15f);
         isGameOver = false;
+
+        
     }
 
     private void Update()
@@ -50,9 +64,12 @@ public class Player: MonoBehaviour{
         // This will stop the character from moving after the game is over
         if(isGameOver == false)
         {
+            
             if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
-            {
+            {            
                 direction = Vector3.up * strength;
+
+                SoundEffectsManager.instance.PlayRandomSoundFXClip(wingSoundClips, transform, 1f);
             }
 
 
@@ -81,20 +98,28 @@ public class Player: MonoBehaviour{
 
         
         spriteRenderer.sprite = sprites[spriteIndex];
+
         
     }
 
     private void OnTriggerEnter2D(Collider2D other){
-        if(other.gameObject.tag == "Obstacle"){
-            //FindObjectOfType<GameManager>().GameOver(); 
-            //Destroy(gameObject);
+        if(other.gameObject.tag == "Drink"){
 
-        } else if(other.gameObject.tag == "ScoreWine"){
-            FindObjectOfType<GameManager>().IncreseScore();
+           SoundEffectsManager.instance.PlayRandomSoundFXClip(drinkSoundClips, transform, 1f);
+        }
+        else if (other.gameObject.tag == "ANTI")
+        {
+            SoundEffectsManager.instance.PlaySoundFXClip(antiSoundClip, transform, 1f);
+        }
+        else if(other.gameObject.tag == "Ground"){
 
-        } else if(other.gameObject.tag == "Ground"){
             FindObjectOfType<GameManager>().GameOver();
             isGameOver = true;
+
+            SoundEffectsManager.instance.PlaySoundFXClip(deathSoundClip, transform, 1f);
+
+
+
         }
     }
 
