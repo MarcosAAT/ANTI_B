@@ -8,7 +8,8 @@ public class DestoryWine : MonoBehaviour
        
         if(other.gameObject.tag == "Player"){
 
-            FindObjectOfType<GameManager>().DecreaseScore();
+            FindObjectOfType<GameManager>().IncreseScore();
+
             Destroy(gameObject);
         }
     }

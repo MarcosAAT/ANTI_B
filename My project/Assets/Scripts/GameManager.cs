@@ -6,15 +6,21 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-   // public Player player; 
+    public Player player; 
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI finalScoreText;
     public TextMeshProUGUI pauseScoreText;
+    public TextMeshProUGUI bestScoreText;
+    public TextMeshProUGUI bestScoreTextPauseMenu;
 
-    private int score;
+
+
+    public int highScore;
+    public int score;
     public GameObject gameOverCanvas;
     public GameObject pauseMenuCanvas;
     public GameObject gameCanvas;
+
 
     [SerializeField] private AudioClip[] drinkSoundClips;
     [SerializeField] private AudioClip antiSoundClip;
@@ -22,10 +28,18 @@ public class GameManager : MonoBehaviour
    
 
 
+    public int consecutiveAntiCount = 0;
+    public bool bonusActive = false;
+
+
 
     private void Start()
     {
         gameOverCanvas.SetActive(false);
+
+        highScore = PlayerPrefs.GetInt("Highscore");
+        bestScoreTextPauseMenu.text = PlayerPrefs.GetInt("Highscore").ToString();
+        bestScoreText.text = PlayerPrefs.GetInt("Highscore").ToString();
     }
     public void DecreaseScore(){
         score--; 
@@ -38,14 +52,38 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void IncreseScore(){
-        score++; 
-        scoreText.text =  score.ToString();
+    public void IncreseScore()
+    {
+        if (bonusActive)
+        {
+            score += 2; // Double the points during bonus
+        }
+        else
+        {
+            score++;
+        }
+
+        scoreText.text = score.ToString();
         finalScoreText.text = score.ToString();
         pauseScoreText.text = score.ToString();
 
+
         SoundEffectsManager.instance.PlaySoundFXClip(antiSoundClip, transform, 1f);
 
+
+        if (score > highScore)
+        {
+            highScore = score;
+            PlayerPrefs.SetInt("Highscore", highScore);
+            bestScoreText.text = PlayerPrefs.GetInt("Highscore").ToString();
+            bestScoreTextPauseMenu.text = PlayerPrefs.GetInt("Highscore").ToString();
+        }
+
+
+        if (score % 10 == 0 && score != 0)
+        {
+            player.UpdateGravity(score);
+        }
 
     }
 
@@ -83,5 +121,29 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
 
     }
+
+    public void ActivateBonus()
+    {
+        bonusActive = true;
+        Invoke(nameof(DeactivateBonus), 10f); // Bonus active for 10 seconds
+    }
+
+    private void DeactivateBonus()
+    {
+        bonusActive = false;
+    }
+
+    public void AntiPickedUp()
+    {
+        consecutiveAntiCount++;
+        if (consecutiveAntiCount >= 5)
+        {
+            ActivateBonus();
+            player.ResetGravity();
+            consecutiveAntiCount = 0;
+        }
+    }
+
+ 
 
 }
