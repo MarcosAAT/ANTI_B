@@ -22,8 +22,7 @@ public class GameManager : MonoBehaviour
     public GameObject gameCanvas;
 
 
-    [SerializeField] private AudioClip[] drinkSoundClips;
-    [SerializeField] private AudioClip antiSoundClip;
+
 
    
 
@@ -47,7 +46,6 @@ public class GameManager : MonoBehaviour
         finalScoreText.text = score.ToString();
         pauseScoreText.text = score.ToString();
 
-        SoundEffectsManager.instance.PlayRandomSoundFXClip(drinkSoundClips, transform, 1f);
 
 
     }
@@ -67,8 +65,7 @@ public class GameManager : MonoBehaviour
         finalScoreText.text = score.ToString();
         pauseScoreText.text = score.ToString();
 
-
-        SoundEffectsManager.instance.PlaySoundFXClip(antiSoundClip, transform, 1f);
+        
 
 
         if (score > highScore)

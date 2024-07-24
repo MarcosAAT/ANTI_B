@@ -22,6 +22,9 @@ public class Player: MonoBehaviour{
 
     [SerializeField] private AudioClip[] wingSoundClips;
     [SerializeField] private AudioClip deathSoundClip;
+    [SerializeField] private AudioClip[] drinkSoundClips;
+    [SerializeField] private AudioClip antiSoundClip;
+
 
     public GameManager manager; 
 
@@ -100,15 +103,15 @@ public class Player: MonoBehaviour{
     }
 
     private void OnTriggerEnter2D(Collider2D other){
-        if(other.gameObject.tag == "Obstacle"){
-            //FindObjectOfType<GameManager>().GameOver(); 
-            //Destroy(gameObject);
+        if(other.gameObject.tag == "Drink"){
 
-        } else if(other.gameObject.tag == "ScoreWine"){
-
-            FindObjectOfType<GameManager>().IncreseScore();
-
-        } else if(other.gameObject.tag == "Ground"){
+           SoundEffectsManager.instance.PlayRandomSoundFXClip(drinkSoundClips, transform, 1f);
+        }
+        else if (other.gameObject.tag == "ANTI")
+        {
+            SoundEffectsManager.instance.PlaySoundFXClip(antiSoundClip, transform, 1f);
+        }
+        else if(other.gameObject.tag == "Ground"){
 
             FindObjectOfType<GameManager>().GameOver();
             isGameOver = true;
