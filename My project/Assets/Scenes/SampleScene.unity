@@ -1181,6 +1181,14 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 1877020715141752976, guid: d734a6a2d0878fb43a6b1b913c95f481, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 1877020715141752976, guid: d734a6a2d0878fb43a6b1b913c95f481, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 24
+      objectReference: {fileID: 0}
     - target: {fileID: 1893656896193242675, guid: d734a6a2d0878fb43a6b1b913c95f481, type: 3}
       propertyPath: m_VerticalAlignment
       value: 256
@@ -1241,6 +1249,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -145.64975
       objectReference: {fileID: 0}
+    - target: {fileID: 2904685717934629135, guid: d734a6a2d0878fb43a6b1b913c95f481, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6cfe04dda6c3d8d4daa68ac560a26b5b, type: 3}
     - target: {fileID: 2986011058842939304, guid: d734a6a2d0878fb43a6b1b913c95f481, type: 3}
       propertyPath: m_Padding.m_Bottom
       value: 64
@@ -1341,6 +1353,10 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4728917567721397173, guid: d734a6a2d0878fb43a6b1b913c95f481, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6cfe04dda6c3d8d4daa68ac560a26b5b, type: 3}
     - target: {fileID: 5517672920019124667, guid: d734a6a2d0878fb43a6b1b913c95f481, type: 3}
       propertyPath: m_Name
       value: Pause High Score Value
@@ -1373,6 +1389,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1392614459}
+    - target: {fileID: 6219556509770608366, guid: d734a6a2d0878fb43a6b1b913c95f481, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 500
+      objectReference: {fileID: 0}
     - target: {fileID: 6543165982285892216, guid: d734a6a2d0878fb43a6b1b913c95f481, type: 3}
       propertyPath: m_VerticalAlignment
       value: 256
@@ -1434,6 +1454,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1392614459}
     - target: {fileID: 8992719944529701409, guid: d734a6a2d0878fb43a6b1b913c95f481, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 8992719944529701409, guid: d734a6a2d0878fb43a6b1b913c95f481, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 8992719944529701409, guid: d734a6a2d0878fb43a6b1b913c95f481, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 17.500244
       objectReference: {fileID: 0}
@@ -1474,7 +1502,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d83c364d6edd32409f7ef7f2e61b715, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationSpeed: 0.5
+  animationSpeed: 0.2
 --- !u!23 &1771388898
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1495,7 +1523,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ce23cd0f9f0217343bcd8a61f0a23cae, type: 2}
+  - {fileID: 2100000, guid: 6c2debcedf2ba6543997df78d7f66a04, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
