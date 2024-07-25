@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class DestroyANTI : MonoBehaviour
 {
-   private void OnTriggerEnter2D(Collider2D other)
-{
-    if (other.gameObject.tag == "Player")
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        FindObjectOfType<GameManager>().IncreseScore();
-        FindObjectOfType<GameManager>().AntiPickedUp();
-        Destroy(gameObject);
+        if (other.gameObject.tag == "Player")
+        {
+            GameManager gameManager = FindObjectOfType<GameManager>();
+            gameManager.IncreaseANTI();
+            gameManager.AntiPickedUp();
+            gameManager.ReduceGravity(); 
+            Destroy(gameObject);
+        }
     }
-}
 }
