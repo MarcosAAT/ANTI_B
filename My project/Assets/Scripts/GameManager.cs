@@ -20,13 +20,6 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverCanvas;
     public GameObject pauseMenuCanvas;
     public GameObject gameCanvas;
-
-
-
-
-   
-
-
     public int consecutiveAntiCount = 0;
     public bool bonusActive = false;
 
@@ -52,21 +45,41 @@ public class GameManager : MonoBehaviour
 
     public void IncreseScore()
     {
-        if (bonusActive)
+            if (bonusActive)
         {
-            score += 2; // Double the points during bonus
+            score += 200; // Add 200 points during bonus
         }
         else
         {
-            score++;
+            score += 100; // Add 100 points normally
         }
 
         scoreText.text = score.ToString();
         finalScoreText.text = score.ToString();
         pauseScoreText.text = score.ToString();
 
-        
+        if (score > highScore)
+        {
+            highScore = score;
+            PlayerPrefs.SetInt("Highscore", highScore);
+            bestScoreText.text = PlayerPrefs.GetInt("Highscore").ToString();
+            bestScoreTextPauseMenu.text = PlayerPrefs.GetInt("Highscore").ToString();
+        }
+        //dont know if we are going to keep this or not every 500 points gravity increses i.e it becomes harder to jump
+        // Update gravity every 500 points
+        // if (score % 500 == 0 && score != 0)
+        // {
+        //     player.UpdateGravity(score);
+        // }
+    }
 
+    public void IncreaseANTI()
+    {
+        score += 250; // Add 250 points for ANTI
+
+        scoreText.text = score.ToString();
+        finalScoreText.text = score.ToString();
+        pauseScoreText.text = score.ToString();
 
         if (score > highScore)
         {
@@ -76,12 +89,7 @@ public class GameManager : MonoBehaviour
             bestScoreTextPauseMenu.text = PlayerPrefs.GetInt("Highscore").ToString();
         }
 
-
-        if (score % 10 == 0 && score != 0)
-        {
-            player.UpdateGravity(score);
-        }
-
+       
     }
 
     public void Pause(){
@@ -130,6 +138,7 @@ public class GameManager : MonoBehaviour
         bonusActive = false;
     }
 
+    //Eevery time players pick 3 anti in a row a bonus will activate 
     public void AntiPickedUp()
     {
         consecutiveAntiCount++;
@@ -141,6 +150,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
- 
+    public void ReduceGravity()
+    {
+        player.ReduceGravity(); 
+    }
+
+    public void IncreaseGravity()
+    {
+        player.IncreaseGravity(); // Assuming you have a method in the Player script to handle gravity increase
+    }
 
 }
