@@ -123,6 +123,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &14503012 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6152301790161040910, guid: d734a6a2d0878fb43a6b1b913c95f481, type: 3}
+  m_PrefabInstance: {fileID: 1742410860}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &113056965
 GameObject:
   m_ObjectHideFlags: 0
@@ -169,11 +180,13 @@ MonoBehaviour:
   strength: 5
   gravity: -9
   tilt: 5
+  ANTIHangoverCureValue: 3
   isGameOver: 0
   sprites:
   - {fileID: 21300000, guid: bffe29034577bfa4cbb3c3df16e0e304, type: 3}
   - {fileID: 21300000, guid: 8e44fcca681bf6d478e79d82625118cd, type: 3}
   - {fileID: 21300000, guid: 97509b6fe6d3d764887d43ee703494e6, type: 3}
+  hangoverMeter: {fileID: 162126688}
 --- !u!58 &113056967
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -303,6 +316,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &162126688 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 845705262373400723, guid: d734a6a2d0878fb43a6b1b913c95f481, type: 3}
+  m_PrefabInstance: {fileID: 1742410860}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae2916dbd16855041a187496342846ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &192259294
 GameObject:
   m_ObjectHideFlags: 0
@@ -1109,6 +1133,14 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 163532302060818036, guid: d734a6a2d0878fb43a6b1b913c95f481, type: 3}
+      propertyPath: m_Value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 163532302060818036, guid: d734a6a2d0878fb43a6b1b913c95f481, type: 3}
+      propertyPath: m_DelayedUpdateVisuals
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 225597431214196539, guid: d734a6a2d0878fb43a6b1b913c95f481, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1172,6 +1204,58 @@ PrefabInstance:
     - target: {fileID: 747387170574820601, guid: d734a6a2d0878fb43a6b1b913c95f481, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -541.1057
+      objectReference: {fileID: 0}
+    - target: {fileID: 845705262373400723, guid: d734a6a2d0878fb43a6b1b913c95f481, type: 3}
+      propertyPath: fill
+      value: 
+      objectReference: {fileID: 14503012}
+    - target: {fileID: 845705262373400723, guid: d734a6a2d0878fb43a6b1b913c95f481, type: 3}
+      propertyPath: gradient.ctime0
+      value: 21588
+      objectReference: {fileID: 0}
+    - target: {fileID: 845705262373400723, guid: d734a6a2d0878fb43a6b1b913c95f481, type: 3}
+      propertyPath: gradient.ctime1
+      value: 43947
+      objectReference: {fileID: 0}
+    - target: {fileID: 845705262373400723, guid: d734a6a2d0878fb43a6b1b913c95f481, type: 3}
+      propertyPath: gradient.ctime2
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 845705262373400723, guid: d734a6a2d0878fb43a6b1b913c95f481, type: 3}
+      propertyPath: gradient.key0.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 845705262373400723, guid: d734a6a2d0878fb43a6b1b913c95f481, type: 3}
+      propertyPath: gradient.key0.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 845705262373400723, guid: d734a6a2d0878fb43a6b1b913c95f481, type: 3}
+      propertyPath: gradient.key0.r
+      value: 0.05869186
+      objectReference: {fileID: 0}
+    - target: {fileID: 845705262373400723, guid: d734a6a2d0878fb43a6b1b913c95f481, type: 3}
+      propertyPath: gradient.key1.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 845705262373400723, guid: d734a6a2d0878fb43a6b1b913c95f481, type: 3}
+      propertyPath: gradient.key1.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 845705262373400723, guid: d734a6a2d0878fb43a6b1b913c95f481, type: 3}
+      propertyPath: gradient.key1.r
+      value: 0.9039393
+      objectReference: {fileID: 0}
+    - target: {fileID: 845705262373400723, guid: d734a6a2d0878fb43a6b1b913c95f481, type: 3}
+      propertyPath: gradient.key2.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 845705262373400723, guid: d734a6a2d0878fb43a6b1b913c95f481, type: 3}
+      propertyPath: gradient.m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 845705262373400723, guid: d734a6a2d0878fb43a6b1b913c95f481, type: 3}
+      propertyPath: gradient.m_NumColorKeys
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1229665405289994363, guid: d734a6a2d0878fb43a6b1b913c95f481, type: 3}
       propertyPath: m_IsActive
@@ -1399,6 +1483,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6682776217906367362, guid: d734a6a2d0878fb43a6b1b913c95f481, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7175097335787917451, guid: d734a6a2d0878fb43a6b1b913c95f481, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7175097335787917451, guid: d734a6a2d0878fb43a6b1b913c95f481, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7593334925978182655, guid: d734a6a2d0878fb43a6b1b913c95f481, type: 3}
