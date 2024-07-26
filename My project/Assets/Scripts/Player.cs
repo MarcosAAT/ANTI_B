@@ -18,11 +18,18 @@ public class Player : MonoBehaviour
     public float gravity = -9.81f;
     public float tilt = 5f;
 
+    public int ANTIHangoverCureValue = 0;
+
+
     public bool isGameOver = false;
 
     private SpriteRenderer spriteRenderer;
     private int spriteIndex;
     public Sprite[] sprites;
+
+
+    public HangoverMeter hangoverMeter;
+
 
     private void Awake()
     {
@@ -33,6 +40,7 @@ public class Player : MonoBehaviour
     {
         InvokeRepeating(nameof(AnimateSprite), 0.15f, 0.15f);
         isGameOver = false;
+
     }
 
     private void Update()
@@ -69,15 +77,23 @@ public class Player : MonoBehaviour
         spriteRenderer.sprite = sprites[spriteIndex];
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.tag == "Drink")
-        {
+
+    private int currentHangoverHealth = 0;
+
+    private void OnTriggerEnter2D(Collider2D other){
+        if(other.gameObject.tag == "Drink"){
+
             SoundEffectsManager.instance.PlayRandomSoundFXClip(drinkSoundClips, transform, 1f);
+            currentHangoverHealth++;
+            hangoverMeter.UpdateHangoverMeter(currentHangoverHealth);
+
         }
         else if (other.gameObject.tag == "ANTI")
         {
             SoundEffectsManager.instance.PlaySoundFXClip(antiSoundClip, transform, 1f);
+            currentHangoverHealth -= ANTIHangoverCureValue;
+            hangoverMeter.UpdateHangoverMeter(currentHangoverHealth);
+
         }
         else if (other.gameObject.tag == "Ground")
         {
