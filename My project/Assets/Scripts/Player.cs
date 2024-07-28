@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
     public float gravity = -9.81f;
     public float tilt = 5f;
 
-    public int ANTIHangoverCureValue = 0;
+    public int ANTIHangoverCureValue = 3;
 
 
     public bool isGameOver = false;
@@ -29,6 +29,7 @@ public class Player : MonoBehaviour
 
 
     public HangoverMeter hangoverMeter;
+    private int currentHangoverHealth;
 
 
     private void Awake()
@@ -41,6 +42,7 @@ public class Player : MonoBehaviour
         InvokeRepeating(nameof(AnimateSprite), 0.15f, 0.15f);
         isGameOver = false;
 
+        currentHangoverHealth = hangoverMeter.hangoverStartValue;
     }
 
     private void Update()
@@ -78,22 +80,29 @@ public class Player : MonoBehaviour
     }
 
 
-    private int currentHangoverHealth = 0;
+   
 
     private void OnTriggerEnter2D(Collider2D other){
         if(other.gameObject.tag == "Drink"){
 
             SoundEffectsManager.instance.PlayRandomSoundFXClip(drinkSoundClips, transform, 1f);
-            currentHangoverHealth++;
-            hangoverMeter.UpdateHangoverMeter(currentHangoverHealth);
 
+            //updates the hangover bar
+            if (currentHangoverHealth < hangoverMeter.hangoverMax) { 
+                currentHangoverHealth++;
+                hangoverMeter.UpdateHangoverMeter(currentHangoverHealth);
+            }
         }
         else if (other.gameObject.tag == "ANTI")
         {
             SoundEffectsManager.instance.PlaySoundFXClip(antiSoundClip, transform, 1f);
-            currentHangoverHealth -= ANTIHangoverCureValue;
-            hangoverMeter.UpdateHangoverMeter(currentHangoverHealth);
 
+            //updates the hangover bar
+            if (currentHangoverHealth > 0) {
+                currentHangoverHealth -= ANTIHangoverCureValue;
+                currentHangoverHealth = Mathf.Max(0, currentHangoverHealth); // this makes sure the hangover bar never goes below 0.
+                hangoverMeter.UpdateHangoverMeter(currentHangoverHealth);
+            }
         }
         else if (other.gameObject.tag == "Ground")
         {
