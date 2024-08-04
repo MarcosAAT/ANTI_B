@@ -167,7 +167,7 @@ MonoBehaviour:
   manager: {fileID: 1392614459}
   upperLimit: 5
   strength: 5
-  gravity: -9
+  gravity: -9.81
   tilt: 5
   ANTIHangoverCureValue: 3
   isGameOver: 0
@@ -1051,6 +1051,10 @@ PrefabInstance:
     - target: {fileID: 2000128268289489747, guid: d734a6a2d0878fb43a6b1b913c95f481, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2073154790131421094, guid: d734a6a2d0878fb43a6b1b913c95f481, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 118.57251
       objectReference: {fileID: 0}
     - target: {fileID: 3058236865189794689, guid: d734a6a2d0878fb43a6b1b913c95f481, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target

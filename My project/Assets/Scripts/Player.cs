@@ -88,7 +88,7 @@ public class Player : MonoBehaviour
             SoundEffectsManager.instance.PlayRandomSoundFXClip(drinkSoundClips, transform, 1f);
 
             //updates the hangover bar
-            if (currentHangoverHealth < hangoverMeter.hangoverMax) { 
+            if (currentHangoverHealth < hangoverMeter.hangoverMax) { // maxs out healthbar at the max variable choosen
                 currentHangoverHealth++;
                 hangoverMeter.UpdateHangoverMeter(currentHangoverHealth);
             }
@@ -127,11 +127,21 @@ public class Player : MonoBehaviour
 
     public void ReduceGravity()
     {
-        gravity *= 0.9f;
+        if (currentHangoverHealth > 0)
+        {
+            if (currentHangoverHealth <= 2 )
+            {
+                gravity = -9.81f;
+            }
+            else gravity += 6f;
+        }
     }
     
     public void IncreaseGravity()
     {
-        gravity *= 1.1f; // Increase gravity by 10%
+        if (currentHangoverHealth < hangoverMeter.hangoverMax)
+        {
+            gravity -= 2f;
+        }
     }
 }
