@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
     public float gravity = -9.81f;
     public float tilt = 5f;
 
-    public int ANTIHangoverCureValue = 3;
+    public int ANTIHangoverCureValue = 3; // make sure to change adjust ReduceGravity() and IncreaseGravity() if changing this
 
 
     public bool isGameOver = false;

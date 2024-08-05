@@ -11,7 +11,7 @@ public class MoveAcross : MonoBehaviour
 
     private void Start()
     {
-        leftEdge = Camera.main.ScreenToWorldPoint(Vector3.zero).x - 2f;
+        leftEdge = Camera.main.ScreenToWorldPoint(Vector3.zero).x - 10f;
     }
 
     private void Update()
