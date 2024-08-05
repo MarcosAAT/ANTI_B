@@ -130,12 +130,14 @@ public class GameManager : MonoBehaviour
     public void ActivateBonus()
     {
         bonusActive = true;
+        player.transform.localScale = Vector3.one * 2;
         Invoke(nameof(DeactivateBonus), 10f); // Bonus active for 10 seconds
     }
 
     private void DeactivateBonus()
     {
         bonusActive = false;
+        player.transform.localScale = Vector3.one;
     }
 
     //Eevery time players pick 3 anti in a row a bonus will activate 
@@ -145,7 +147,7 @@ public class GameManager : MonoBehaviour
         if (consecutiveAntiCount >= 5)
         {
             ActivateBonus();
-            player.ResetGravity();
+            //player.ResetGravity();
             consecutiveAntiCount = 0;
         }
     }
