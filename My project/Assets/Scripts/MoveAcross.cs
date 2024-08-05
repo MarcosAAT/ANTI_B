@@ -17,8 +17,8 @@ public class MoveAcross : MonoBehaviour
     {
         if (gameManager != null)
         {
-            // Get the speed from the GameManager instance
-            float moveSpeed = gameManager.GetSpeed();
+            // Get the speed from the GameManager
+            float moveSpeed = gameManager.GetCurrentSpeed();
 
             // Move the object to the left
             transform.position += Vector3.left * moveSpeed * Time.deltaTime;

@@ -6,6 +6,8 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance;
+
     public Player player;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI finalScoreText;
@@ -22,8 +24,11 @@ public class GameManager : MonoBehaviour
     public bool bonusActive = false;
 
     // Speed variables
-    public float speed = 2.0f; // Initial speed
-    public float speedIncreaseRate = 0.1f; // Speed increase rate over time
+    public float initialSpeed = 5f; // Initial speed for moving objects
+    public float acceleration = 0.1f; // Acceleration over time
+    public float maxSpeed = 20f; // Maximum speed limit
+
+    private float currentSpeed;
 
     private void Start()
     {
@@ -32,22 +37,28 @@ public class GameManager : MonoBehaviour
         highScore = PlayerPrefs.GetInt("Highscore");
         bestScoreTextPauseMenu.text = PlayerPrefs.GetInt("Highscore").ToString();
         bestScoreText.text = PlayerPrefs.GetInt("Highscore").ToString();
+
+        currentSpeed = initialSpeed;
     }
 
     private void Update()
     {
-        // Increase the speed over time
-        speed += speedIncreaseRate * Time.deltaTime;
+        // Increase speed over time
+        currentSpeed += acceleration * Time.deltaTime;
+        // Clamp the speed to the maximum speed limit
+        currentSpeed = Mathf.Min(currentSpeed, maxSpeed);
+
+        Debug.Log($"GameManager Update: Current Speed: {currentSpeed}");
     }
 
-    public float GetSpeed()
+    public float GetCurrentSpeed()
     {
-        return speed;
+        return currentSpeed;
     }
 
     public void DecreaseScore()
     {
-        score--;
+        score--; 
         scoreText.text = score.ToString();
         finalScoreText.text = score.ToString();
         pauseScoreText.text = score.ToString();
@@ -149,11 +160,11 @@ public class GameManager : MonoBehaviour
 
     public void ReduceGravity()
     {
-        player.ReduceGravity();
+        player.ReduceGravity(); 
     }
 
     public void IncreaseGravity()
     {
-        player.IncreaseGravity();
+        player.IncreaseGravity(); 
     }
 }
