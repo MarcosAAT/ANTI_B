@@ -6,14 +6,14 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    public Player player; 
+    public static GameManager Instance;
+
+    public Player player;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI finalScoreText;
     public TextMeshProUGUI pauseScoreText;
     public TextMeshProUGUI bestScoreText;
     public TextMeshProUGUI bestScoreTextPauseMenu;
-
-
 
     public int highScore;
     public int score;
@@ -23,7 +23,12 @@ public class GameManager : MonoBehaviour
     public int consecutiveAntiCount = 0;
     public bool bonusActive = false;
 
+    // Speed variables
+    public float initialSpeed = 5f; // Initial speed for moving objects
+    public float acceleration = 0.1f; // Acceleration over time
+    public float maxSpeed = 20f; // Maximum speed limit
 
+    private float currentSpeed;
 
     private void Start()
     {
@@ -32,20 +37,36 @@ public class GameManager : MonoBehaviour
         highScore = PlayerPrefs.GetInt("Highscore");
         bestScoreTextPauseMenu.text = PlayerPrefs.GetInt("Highscore").ToString();
         bestScoreText.text = PlayerPrefs.GetInt("Highscore").ToString();
+
+        currentSpeed = initialSpeed;
     }
-    public void DecreaseScore(){
+
+    private void Update()
+    {
+        // Increase speed over time
+        currentSpeed += acceleration * Time.deltaTime;
+        // Clamp the speed to the maximum speed limit
+        currentSpeed = Mathf.Min(currentSpeed, maxSpeed);
+
+        Debug.Log($"GameManager Update: Current Speed: {currentSpeed}");
+    }
+
+    public float GetCurrentSpeed()
+    {
+        return currentSpeed;
+    }
+
+    public void DecreaseScore()
+    {
         score--; 
-        scoreText.text =  score.ToString();
+        scoreText.text = score.ToString();
         finalScoreText.text = score.ToString();
         pauseScoreText.text = score.ToString();
-
-
-
     }
 
     public void IncreseScore()
     {
-            if (bonusActive)
+        if (bonusActive)
         {
             score += 200; // Add 200 points during bonus
         }
@@ -65,12 +86,6 @@ public class GameManager : MonoBehaviour
             bestScoreText.text = PlayerPrefs.GetInt("Highscore").ToString();
             bestScoreTextPauseMenu.text = PlayerPrefs.GetInt("Highscore").ToString();
         }
-        //dont know if we are going to keep this or not every 500 points gravity increses i.e it becomes harder to jump
-        // Update gravity every 500 points
-        // if (score % 500 == 0 && score != 0)
-        // {
-        //     player.UpdateGravity(score);
-        // }
     }
 
     public void IncreaseANTI()
@@ -88,17 +103,12 @@ public class GameManager : MonoBehaviour
             bestScoreText.text = PlayerPrefs.GetInt("Highscore").ToString();
             bestScoreTextPauseMenu.text = PlayerPrefs.GetInt("Highscore").ToString();
         }
-
-       
     }
 
-    public void Pause(){
-        Time.timeScale= 0f;
-        //player.enabled= false; 
-
-
+    public void Pause()
+    {
+        Time.timeScale = 0f;
         pauseMenuCanvas.SetActive(true);
-
     }
 
     public void Resume()
@@ -106,10 +116,10 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-    public void GameOver(){
+    public void GameOver()
+    {
         gameOverCanvas.SetActive(true);
         Time.timeScale = 0f;
-
         gameCanvas.SetActive(false);
     }
 
@@ -117,14 +127,12 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(1);
         Time.timeScale = 1f;
-
     }
 
     public void ReturnMainMenu()
     {
         SceneManager.LoadScene(0);
         Time.timeScale = 1f;
-
     }
 
     public void ActivateBonus()
@@ -140,14 +148,12 @@ public class GameManager : MonoBehaviour
         player.transform.localScale = Vector3.one;
     }
 
-    //Eevery time players pick 3 anti in a row a bonus will activate 
     public void AntiPickedUp()
     {
         consecutiveAntiCount++;
         if (consecutiveAntiCount >= 5)
         {
             ActivateBonus();
-            //player.ResetGravity();
             consecutiveAntiCount = 0;
         }
     }
@@ -159,7 +165,6 @@ public class GameManager : MonoBehaviour
 
     public void IncreaseGravity()
     {
-        player.IncreaseGravity(); // Assuming you have a method in the Player script to handle gravity increase
+        player.IncreaseGravity(); 
     }
-
 }
