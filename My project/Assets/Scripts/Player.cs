@@ -134,8 +134,9 @@ public class Player : MonoBehaviour
             isGameOver = true;
             SoundEffectsManager.instance.PlaySoundFXClip(deathSoundClip, transform, 1f);
 
-            Color spriteColor = spriteRenderer.color; // Set the opacity back to full when hitting ground
-            spriteColor.a = 1f; // Set to full opacity
+            // Set the opacity back to full when hitting ground
+            Color spriteColor = spriteRenderer.color;
+            spriteColor.a = 1f;
             spriteRenderer.color = spriteColor;
 
         }
@@ -189,5 +190,10 @@ public class Player : MonoBehaviour
     public void DeactivateInvinsibility()
     {
         invincibilityActive = false;
+
+        // makes sure the opacity is set back to full
+        Color spriteColor = spriteRenderer.color; 
+        spriteColor.a = 1f; 
+        spriteRenderer.color = spriteColor;
     }
 }
