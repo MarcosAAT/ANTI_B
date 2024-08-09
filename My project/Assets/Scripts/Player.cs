@@ -22,8 +22,10 @@ public class Player : MonoBehaviour
 
 
     public bool isGameOver = false;
+    public bool invincibilityActive = false;
 
     private SpriteRenderer spriteRenderer;
+    private PolygonCollider2D birdCollider;
     private int spriteIndex;
     public Sprite[] sprites;
 
@@ -35,6 +37,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        birdCollider = GetComponent<PolygonCollider2D>();
     }
 
     private void Start()
@@ -67,6 +70,7 @@ public class Player : MonoBehaviour
         }
     }
 
+    private bool isLowOpacity = true; // used for invincibility effect (flashing)
     private void AnimateSprite()
     {
         spriteIndex++;
@@ -77,6 +81,26 @@ public class Player : MonoBehaviour
         }
 
         spriteRenderer.sprite = sprites[spriteIndex];
+
+        if (invincibilityActive)
+        {
+            Color spriteColor = spriteRenderer.color;
+
+            if (isLowOpacity)
+            {
+                spriteColor.a = 0.3f; // Set to lower opacity
+            }
+            else
+            {
+                spriteColor.a = 1f; // Set to full opacity
+            }
+
+            spriteRenderer.color = spriteColor;
+
+            // Toggle the opacity on and off
+            isLowOpacity = !isLowOpacity;
+        }
+
     }
 
 
@@ -105,6 +129,19 @@ public class Player : MonoBehaviour
             }
         }
         else if (other.gameObject.tag == "Ground")
+        {
+            FindObjectOfType<GameManager>().GameOver();
+            isGameOver = true;
+            SoundEffectsManager.instance.PlaySoundFXClip(deathSoundClip, transform, 1f);
+
+            // Set the opacity back to full when hitting ground
+            Color spriteColor = spriteRenderer.color;
+            spriteColor.a = 1f;
+            spriteRenderer.color = spriteColor;
+
+        }
+
+        else if (other.gameObject.tag == "Obstacle" && !invincibilityActive)
         {
             FindObjectOfType<GameManager>().GameOver();
             isGameOver = true;
@@ -143,5 +180,20 @@ public class Player : MonoBehaviour
         {
             gravity -= 2f;
         }
+    }
+
+    public void Invincibility()
+    {
+        invincibilityActive = true;
+    }
+
+    public void DeactivateInvinsibility()
+    {
+        invincibilityActive = false;
+
+        // makes sure the opacity is set back to full
+        Color spriteColor = spriteRenderer.color; 
+        spriteColor.a = 1f; 
+        spriteRenderer.color = spriteColor;
     }
 }
