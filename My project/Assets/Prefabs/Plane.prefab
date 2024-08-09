@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8002333415670742427}
   m_Layer: 0
   m_Name: Flag
-  m_TagString: Ground
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -117,7 +117,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.587111, y: 0.10350752}
+  m_Offset: {x: 1.5273578, y: 0.05118847}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -128,7 +128,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5.3996687, y: 3.428691}
+  m_Size: {x: 4.836268, y: 2.7568974}
   m_EdgeRadius: 0
 --- !u!1 &3782019518153498085
 GameObject:
@@ -144,7 +144,7 @@ GameObject:
   - component: {fileID: 8403980823865815660}
   m_Layer: 0
   m_Name: Plane
-  m_TagString: Ground
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -159,7 +159,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6.039585, y: 4.3960524, z: 0}
-  m_LocalScale: {x: 0.58, y: 0.58, z: 0.58}
+  m_LocalScale: {x: 0.45999998, y: 0.45999998, z: 0.45999998}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4799403202254502562}
@@ -261,7 +261,7 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -1.22, y: -1.2149999}
+    - - {x: -1.3371301, y: -1.2035897}
       - {x: -1.0799999, y: -1.2149999}
       - {x: -0.95, y: -1.145}
       - {x: -0.81, y: -1.0749999}
@@ -321,15 +321,10 @@ PolygonCollider2D:
       - {x: -0.32, y: 0.995}
       - {x: -0.39, y: 1.0849999}
       - {x: -0.38, y: 1.265}
-      - {x: -0.099999994, y: 1.295}
-      - {x: 0, y: 1.3149999}
-      - {x: 0.02, y: 1.495}
-      - {x: -0.099999994, y: 1.5649999}
-      - {x: -0.25, y: 1.635}
-      - {x: -1.9799999, y: 1.635}
-      - {x: -2.08, y: 1.555}
-      - {x: -2.07, y: 1.395}
-      - {x: -2, y: 1.265}
+      - {x: -0.21226077, y: 1.3351085}
+      - {x: -0.2768114, y: 1.4897685}
+      - {x: -1.8578112, y: 1.493261}
+      - {x: -1.9150959, y: 1.390122}
       - {x: -1.8499999, y: 1.275}
       - {x: -1.88, y: 1.025}
       - {x: -1.79, y: 0.945}
@@ -350,24 +345,16 @@ PolygonCollider2D:
       - {x: -3.07, y: -0.065}
       - {x: -2.9099998, y: -0.21499999}
       - {x: -2.85, y: -0.205}
-      - {x: -2.86, y: -0.955}
-      - {x: -2.87, y: -0.98499995}
-      - {x: -2.77, y: -1.0749999}
-      - {x: -2.62, y: -1.0849999}
-      - {x: -2.58, y: -1.025}
+      - {x: -2.7838175, y: -0.86946464}
+      - {x: -2.6179981, y: -0.847099}
       - {x: -2.58, y: -0.405}
       - {x: -2.5, y: -0.615}
       - {x: -2.33, y: -0.705}
       - {x: -1.91, y: -0.92499995}
       - {x: -2.02, y: -1.025}
       - {x: -2.1599998, y: -1.165}
-      - {x: -2.1399999, y: -1.545}
-      - {x: -2.08, y: -1.635}
-      - {x: -1.93, y: -1.775}
-      - {x: -1.52, y: -1.775}
-      - {x: -1.49, y: -1.7249999}
-      - {x: -1.36, y: -1.7049999}
-      - {x: -1.29, y: -1.545}
+      - {x: -1.9699135, y: -1.5658641}
+      - {x: -1.4470121, y: -1.6128701}
     - - {x: -1.42, y: -1.035}
       - {x: -1.4499999, y: -1.005}
       - {x: -1.5, y: -1.005}
@@ -446,6 +433,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89c2e5c5e78c20a47b1c0d1bc4bd4f4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
-  acceleration: 1
-  maxSpeed: 20

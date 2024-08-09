@@ -134,8 +134,8 @@ GameObject:
   - component: {fileID: 113056970}
   - component: {fileID: 113056969}
   - component: {fileID: 113056968}
-  - component: {fileID: 113056967}
   - component: {fileID: 113056966}
+  - component: {fileID: 113056971}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -176,41 +176,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 8e44fcca681bf6d478e79d82625118cd, type: 3}
   - {fileID: 21300000, guid: 97509b6fe6d3d764887d43ee703494e6, type: 3}
   hangoverMeter: {fileID: 162126688}
---- !u!58 &113056967
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 113056965}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.35416666
 --- !u!50 &113056968
 Rigidbody2D:
   serializedVersion: 4
@@ -305,6 +270,61 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &113056971
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 113056965}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.76, y: 0.52}
+    newSize: {x: 0.7083333, y: 0.5}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.34, y: 0.04}
+      - {x: 0.16167775, y: 0.22979899}
+      - {x: -0.073288515, y: 0.2264433}
+      - {x: -0.22651005, y: 0.09657732}
+      - {x: -0.26489952, y: -0.018858168}
+      - {x: -0.34644306, y: -0.06664427}
+      - {x: -0.34644306, y: -0.16838917}
+      - {x: -0.18590716, y: -0.24}
+      - {x: 0.22610813, y: -0.23825514}
+      - {x: 0.34644353, y: -0.14818814}
+  m_UseDelaunayMesh: 0
 --- !u!114 &162126688 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 845705262373400723, guid: d734a6a2d0878fb43a6b1b913c95f481, type: 3}
@@ -932,6 +952,9 @@ MonoBehaviour:
   gameCanvas: {fileID: 1268330332}
   consecutiveAntiCount: 0
   bonusActive: 0
+  initialSpeed: 5
+  acceleration: 0.1
+  maxSpeed: 20
 --- !u!4 &1392614460
 Transform:
   m_ObjectHideFlags: 0

@@ -79,7 +79,7 @@ public class GameManager : MonoBehaviour
         finalScoreText.text = score.ToString();
         pauseScoreText.text = score.ToString();
 
-        if (score > highScore)
+        if (score > highScore) // save highscore to player prefs
         {
             highScore = score;
             PlayerPrefs.SetInt("Highscore", highScore);
@@ -105,13 +105,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void Pause()
+    public void Pause() // pause button when pressing settings
     {
         Time.timeScale = 0f;
         pauseMenuCanvas.SetActive(true);
     }
 
-    public void Resume()
+    public void Resume() // resume button
     {
         Time.timeScale = 1f;
     }
@@ -123,13 +123,13 @@ public class GameManager : MonoBehaviour
         gameCanvas.SetActive(false);
     }
 
-    public void PlayGame()
+    public void PlayGame() // play again button
     {
         SceneManager.LoadScene(1);
         Time.timeScale = 1f;
     }
 
-    public void ReturnMainMenu()
+    public void ReturnMainMenu() // main menu button
     {
         SceneManager.LoadScene(0);
         Time.timeScale = 1f;
@@ -138,7 +138,7 @@ public class GameManager : MonoBehaviour
     public void ActivateBonus()
     {
         bonusActive = true;
-        player.transform.localScale = Vector3.one * 2;
+        player.Invincibility();
         Invoke(nameof(DeactivateBonus), 10f); // Bonus active for 10 seconds
     }
 
@@ -146,6 +146,7 @@ public class GameManager : MonoBehaviour
     {
         bonusActive = false;
         player.transform.localScale = Vector3.one;
+        player.DeactivateInvinsibility();
     }
 
     public void AntiPickedUp()
